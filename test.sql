@@ -1,0 +1,5 @@
+CREATE TABLE question
+(
+    id INT PRIMARY KEY NOT NULL
+
+)
