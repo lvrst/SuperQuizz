@@ -11,9 +11,13 @@ CREATE TABLE Categories
 (
     /** Je crée l'ID
     C'est la Clé Primaire de l'entité 'Category'
-    Elle est unique et non nulle
     */
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    /** Chaque entité 'Category' possède :
+    - un nom
+    - une couleur utilisée en background d'entête et pour l'icône
+    - une icone
+    - une image présentée en vignette de la catégorie */
     `name` VARCHAR (100),
     `color` VARCHAR (100),
     `icon` VARCHAR (190), 
