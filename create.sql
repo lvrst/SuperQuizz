@@ -7,7 +7,7 @@ CREATE DATABASE IF NOT EXISTS quiz_bdd;
 /** Je crée la Table 'Categories' en premier lieu
     Ainsi, elle pourra être référencée pour les dépendances
  */
-CREATE TABLE Categories
+CREATE TABLE IF NOT EXISTS Categories
 (
     /** Je crée l'ID
     C'est la Clé Primaire de l'entité 'Category'
@@ -22,23 +22,30 @@ CREATE TABLE Categories
     `color` VARCHAR (100),
     `icon` VARCHAR (190), 
     `image` VARCHAR (190)
-);
+) ENGINE=InnoDb;
 
 
-CREATE TABLE Quizzes
+CREATE TABLE IF NOT EXISTS Quizzes
 (
     id INT PRIMARY KEY NOT NULL,
     `name` VARCHAR (100),
     `image` VARCHAR (190),
-    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
-);
+    /**Je crée l'emplacement de ma clé étrangère 
+    En précisant son nom et son type de données */
+    `category_id` INT,
+    /**Je génère la clé étrangère
+    Je précise le moteur InnoDB */
+    FOREIGN KEY (category_id) REFERENCES Categories(id) 
+) ENGINE=InnoDb;
 
-CREATE TABLE Questions
+CREATE TABLE IF NOT EXISTS Questions
 (
     id INT PRIMARY KEY NOT NULL,
     `image` VARCHAR (190),
     `question` VARCHAR (190),
     `answer` BOOLEAN, 
     `explanation` TEXT,
-    FOREIGN KEY (QuizID) REFERENCES Quizzes(QuizID)
-);
+    `quiz_id` INT,
+    FOREIGN KEY (quiz_id) REFERENCES Quizzes(id) 
+) ENGINE=InnoDb;
+
