@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS Questions
 (
     id INT PRIMARY KEY NOT NULL,
     `image` VARCHAR (190),
-    `question` VARCHAR (190),
+    `statement` TEXT,
     `answer` BOOLEAN, 
     `explanation` TEXT,
     `quiz_id` INT,
