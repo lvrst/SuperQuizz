@@ -35,7 +35,7 @@ Attributs :
 
 - id : clé primaire
 - image: varchar 190
-- question: varchar 190,
+- statement: varchar 190,
 - answer: boolean,
 - explanation: text,
 
@@ -49,4 +49,4 @@ Relations :
     - Quiz
 - Quiz
     - Question
-- Question# SuperQuizz
+- Question
