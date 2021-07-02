@@ -13,37 +13,35 @@ CREATE TABLE IF NOT EXISTS Categories
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     -- Chaque entité 'Category' possède :
     -- un nom
-    -- une couleur utilisée en background d'entête et pour l'icône
     -- une icone
-    -- une image présentée en vignette de la catégorie
-    `name` VARCHAR (100),
-    `color` VARCHAR (100),
-    `icon` VARCHAR (190), 
-    `image` VARCHAR (190)
+    -- ! une couleur utilisée en background d'entête et pour l'icône
+    -- ! une image présentée en vignette de la catégorie
+    `title` VARCHAR (100) NOT NULL,
+    `icon` VARCHAR (255) 
+    --`color` VARCHAR (40),
+    --`image` VARCHAR (190)
 ) ENGINE=InnoDb;
 
 
 CREATE TABLE IF NOT EXISTS Quizzes
 (
     id INT PRIMARY KEY NOT NULL,
-    `name` VARCHAR (100),
-    `image` VARCHAR (190),
+    `title` VARCHAR (70) NOT NULL,
+    `image` VARCHAR (255),
     -- Je crée l'emplacement de ma clé étrangère 
     -- En précisant son nom et son type de données */
     `category_id` INT,
     -- Je génère la clé étrangère
     -- Je précise le moteur InnoDB
-    FOREIGN KEY (category_id) REFERENCES Categories(id) 
+    FOREIGN KEY (category_id) REFERENCES Category(id) 
 ) ENGINE=InnoDb;
 
 CREATE TABLE IF NOT EXISTS Questions
 (
     id INT PRIMARY KEY NOT NULL,
-    `image` VARCHAR (190),
-    `statement` TEXT,
-    `answer` BOOLEAN, 
-    `explanation` TEXT,
-    `quiz_id` INT,
+    `statement` VARCHAR (200),
+    `quiz_id` INT
+    -- `image` VARCHAR (190)
     FOREIGN KEY (quiz_id) REFERENCES Quizzes(id) 
 ) ENGINE=InnoDb;
 
